@@ -6,14 +6,22 @@ declare global {
 
 export function getPool() {
   if (!global.__mysqlPool) {
-    global.__mysqlPool = mysql.createPool({
-      host: process.env.MYSQL_HOST,
-      port: Number(process.env.MYSQL_PORT || 3306),
-      user: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD || "",
-      database: process.env.MYSQL_DATABASE,
-      connectionLimit: 5,
-    });
+    if (process.env.DATABASE_URL) {
+      global.__mysqlPool = mysql.createPool({
+        uri: process.env.DATABASE_URL,
+        connectionLimit: 5,
+      });
+    } else {
+      global.__mysqlPool = mysql.createPool({
+        host: process.env.MYSQL_HOST,
+        port: Number(process.env.MYSQL_PORT || 3306),
+        user: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD || "",
+        database: process.env.MYSQL_DATABASE,
+        connectionLimit: 5,
+      });
+    }
   }
+
   return global.__mysqlPool;
 }
