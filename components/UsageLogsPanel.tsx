@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 
 type LogRow = {
   id: number;
+  water_resource_id: number;
   used_at: string;
   field_name: string;
   amount: number;
   note: string | null;
+  is_current_well: number;
+  land_location: string | null;
+  name: string | null;
 };
 
 export default function UsageLogsPanel({ wellId }: { wellId: number }) {
@@ -42,7 +46,7 @@ export default function UsageLogsPanel({ wellId }: { wellId: number }) {
       setErr(null);
 
       const r = await fetch(
-        `/api/usage-logs?waterResourceId=${wellId}&limit=100`,
+        `/api/usage-logs?waterResourceId=${wellId}&limit=5`,
         { cache: "no-store" }
       );
       const j = await r.json();
@@ -242,6 +246,8 @@ export default function UsageLogsPanel({ wellId }: { wellId: number }) {
             <table>
               <thead>
                 <tr>
+                  <th>Priority</th>
+                  <th>Well</th>
                   <th>Time</th>
                   <th>Field</th>
                   <th>Amount</th>
@@ -306,6 +312,11 @@ function EditableRow({
 
   return (
     <tr>
+      <td>{row.is_current_well ? "Current well" : "Other well"}</td>
+      <td>
+        {row.land_location || "-"}
+        {row.name ? ` / ${row.name}` : ""}
+      </td>
       <td>{row.used_at}</td>
       <td>
         <input value={field} onChange={(e) => setField(e.target.value)} />

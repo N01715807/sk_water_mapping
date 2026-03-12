@@ -167,4 +167,4 @@ http://localhost:3000/api/wells/facets
 详情
 http://localhost:3000/api/wells/12345
 
-192.168.5.105
+https://skwatermapping-production.up.railway.app/home
