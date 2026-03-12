@@ -178,7 +178,7 @@ export default function WellsList() {
             </div>
 
             <div className="wells-list-item-actions">
-              <button type="button" onClick={() => viewOnMap(w)}>
+              <button className="btn-interactive"type="button" onClick={() => viewOnMap(w)}>
                 View on map
               </button>
               <a href={`/wells/${w.id}`}>View details</a>
@@ -190,7 +190,7 @@ export default function WellsList() {
       </div>
 
       <div className="wells-list-pagination">
-        <button
+        <button className="btn-interactive"
           type="button"
           disabled={page <= 1}
           onClick={() => setPage((p) => Math.max(1, p - 1))}
@@ -202,7 +202,7 @@ export default function WellsList() {
           Page {page} of {totalPages}
         </span>
 
-        <button
+        <button className="btn-interactive"
           type="button"
           disabled={page >= totalPages}
           onClick={() => setPage((p) => p + 1)}

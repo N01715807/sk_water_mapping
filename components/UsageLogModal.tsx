@@ -123,13 +123,13 @@ export default function UsageLogModal() {
     }
   }
 
-  if (!open) return <button onClick={() => setOpen(true)}>Usage Log</button>;
+  if (!open) return <button className="btn-interactive" onClick={() => setOpen(true)}>Usage Log</button>;
 
   const totalPages = Math.max(1, Math.ceil(total / 30));
 
   return (
     <div>
-      <button onClick={() => setOpen(false)}>Close</button>
+      <button className="btn-interactive" onClick={() => setOpen(false)}>Close</button>
 
       <div>
         <div>Search by name:</div>
@@ -179,13 +179,13 @@ export default function UsageLogModal() {
       </div>
 
       <div>
-        <button disabled={page <= 1} onClick={() => setPage((p) => Math.max(1, p - 1))}>
+        <button className="btn-interactive" disabled={page <= 1} onClick={() => setPage((p) => Math.max(1, p - 1))}>
           Prev
         </button>
         <span>
           Page {page} / {totalPages} (total {total})
         </span>
-        <button disabled={page >= totalPages} onClick={() => setPage((p) => p + 1)}>
+        <button className="btn-interactive" disabled={page >= totalPages} onClick={() => setPage((p) => p + 1)}>
           Next
         </button>
       </div>
@@ -208,7 +208,7 @@ export default function UsageLogModal() {
       {err && <div>{err}</div>}
       {msg && <div>{msg}</div>}
 
-      <button disabled={saving} onClick={save}>
+      <button  className="btn-interactive" disabled={saving} onClick={save}>
         {saving ? "Saving..." : "Save"}
       </button>
     </div>

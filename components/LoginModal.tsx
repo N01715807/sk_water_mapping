@@ -91,7 +91,7 @@ export default function LoginModal() {
     <>
       {!authed ? (
         <button
-          className="login-trigger"
+          className="login-trigger btn-interactive"
           onClick={() => {
             setErr(null);
             setOpen(true);
@@ -102,7 +102,7 @@ export default function LoginModal() {
       ) : (
         <div className="login-status">
           <span>Logged in</span>
-          <button className="login-action" onClick={logout}>
+          <button className="login-action btn-interactive" onClick={logout}>
             Logout
           </button>
           {err && <div>{err}</div>}

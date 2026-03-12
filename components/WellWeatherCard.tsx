@@ -44,7 +44,7 @@ export default function WellWeatherCard({ lat, lng }: { lat: number; lng: number
 
   return (
     <div>
-      <button onClick={() => router.back()}>
+      <button className="btn-interactive" onClick={() => router.back()}>
         Back
         </button>
       <h2>Weather</h2>
