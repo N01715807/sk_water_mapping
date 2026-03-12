@@ -161,6 +161,10 @@ export default function WellsList() {
         <div className="wells-list-result-count">
           {loading ? "Loading wells..." : `${total} well${total === 1 ? "" : "s"} found`}
         </div>
+
+        <div className="wells-list-format-hint">
+          Format: Quarter–Section–Township–Range–Meridian (e.g., NE-07-16-16-2).
+        </div>
       </div>
 
       {err && <div className="wells-list-error">{err}</div>}

@@ -49,4 +49,8 @@ next-env.d.ts
 # Misc
 *.pem
 
+# Database files
 db.sql
+
+# Documentation
+mark.md
